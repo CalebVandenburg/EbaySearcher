@@ -8,3 +8,27 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<form method="post" id="ebaySearchForm" >
+    <input type="text"  id="Keywords" class="form-control"  name="Keywords"/>
+    <input asp-page-handler="Search" type="submit" value="Search" class="btn btn-primary" name="" />
+</form>
+<div id="ebaySearchContainer">
+
+</div>
+<script>
+    window.onload = function() {        
+        document.getElementById('ebaySearchForm').onsubmit = () => {
+            let formData = new FormData(document.forms[0]);
+            fetch('?handler=Search', {
+                method: 'post',
+                body: new URLSearchParams(formData) 
+            })
+            .then((response) => response.text())
+            .then(data => {
+                console.log(data);
+                document.getElementById('ebaySearchContainer').innerHTML = data;
+            });
+            return false;
+        };
+    }
+</script>

@@ -1,0 +1,8 @@
+﻿@model EbaySearcher.EbayRepository.SearchResponseData
+@{
+}
+<h1>Results</h1>
+@foreach(var item in @Model.FindItemsAdvancedResponse.First().SearchResult.First().SearchItems) {
+    <h3>@item.Title.First()</h3>
+    <p>@item.ItemId.First()</p>
+}

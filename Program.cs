@@ -1,8 +1,11 @@
+using EbaySearcher.EbayRepository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddSingleton<EbayClient>(new EbayClient(builder.Configuration["AppKeys:AppID"], builder.Configuration["AppKeys:DevID"], builder.Configuration["AppKeys:CertID"]));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
