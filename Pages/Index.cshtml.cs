@@ -22,7 +22,7 @@ namespace EbaySearcher.Pages
         public PartialViewResult OnPostSearchAsync([FromForm] SearchFormInput searchInput)
         {
 
-            var results = EbayClient.GetEbayItems("findItemsAdvanced", "1.0.0", "JSON", true, 2, searchInput.Keywords).Result;
+            var results = EbayClient.GetEbayItems("findItemsAdvanced", "1.0.0", "JSON", true, 100, searchInput.Keywords).Result;
             var partialData = Partial("Partials/_EbayItemsList", results);
             return partialData;
         }

@@ -2,7 +2,18 @@
 @{
 }
 <h1>Results</h1>
-@foreach(var item in @Model.FindItemsAdvancedResponse.First().SearchResult.First().SearchItems) {
-    <h3>@item.Title.First()</h3>
-    <p>@item.ItemId.First()</p>
+<div id="searchContainer">
+    
+@foreach(var item in Model.FindItemsAdvancedResponse.First().SearchResult.First().SearchItems) {
+    <div id="searchItemContainer">
+        <div id="left">
+            <img src="@item.GalleryURL?.First()" />
+        </div>
+        <div id="right">            
+            <h5>@item.Title?.First()</h5>
+            <h6>@item.Subtitle?.First()</h6>
+            <h6>@item.Location?.First()</h6>
+        </div>
+    </div>
 }
+</div>
